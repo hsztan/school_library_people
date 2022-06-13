@@ -1,56 +1,36 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
+# School Library
 
-# Project Name
-
-> Description the project.
-
+> A OOP Library tool to record books being borrowed from a University Library.
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
-
-## Live Demo (if available)
-
-[Live Demo Link](https://livedemo.com)
-
+- Ruby
+- Github
 
 ## Getting Started
-
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
 
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
+- Have a version of Ruby installed in your local environment.
+
 ### Setup
 
-### Install
+- Clone the repo.
 
-### Usage
+### Run
 
-### Run tests
+- On your local director run: `ruby main.rb`
 
-### Deployment
+## Author
 
+👤 **Henry Sztanski**
 
+- GitHub: [@hsztan](https://github.com/hsztan)
+- Twitter: [@hsztanski](https://github.com/hsztan)
+- LinkedIn: [@henry-nawrocki](https://linkedin.com/in/henry-nawrocki)
 
-## Authors
-
-👤 **Author1**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
 
 ## 🤝 Contributing
 
