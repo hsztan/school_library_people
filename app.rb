@@ -71,7 +71,7 @@ class App
     name = gets.chomp
     puts 'Has parent permission? (Y/N): '
     parent_permission = gets.chomp.downcase == 'y'
-    student = Student.new(age, 'n/a', name, parent_permission)
+    student = Student.new(age, 'n/a', name, parent_permission: parent_permission)
     @store.people << student
     puts 'Person created successfully'
   end
@@ -107,10 +107,4 @@ class App
   end
 end
 
-# book = Book.new('The Hobbit', 'J.R.R. Tolkien')
-# student = Student.new(12, '1A', 'John Doe')
-# app = App.new
-# app.store.books << book
-# app.store.people << student
 App.new.main
-# student = Student.new(12, '1A', 'John Doe')
