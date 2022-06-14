@@ -30,11 +30,21 @@ class App
     when '4' then create_book
     when '5' then create_rental
     when '6' then list_all_rentals_for_person
-    when '7' then exit
+    when '7' then end_program
     else
       puts 'Invalid selection'
       main_selection
     end
+  end
+
+  def create_book
+    print 'Title: '
+    title = gets.chomp
+    print 'Author: '
+    author = gets.chomp
+    book = Book.new(title, author)
+    store.books << book
+    puts 'Book created successfully'
   end
 
   def create_person
@@ -58,6 +68,18 @@ class App
     parent_permission = gets.chomp.downcase == 'y'
     student = Student.new(age, 'n/a', name, parent_permission)
     @store.people << student
+    puts 'Person created successfully'
+  end
+
+  def create_teacher
+    puts 'Age: '
+    age = gets.chomp
+    puts 'Name: '
+    name = gets.chomp
+    puts 'Specialization: '
+    specialization = gets.chomp
+    teacher = Teacher.new(age, specialization, name)
+    @store.people << teacher
     puts 'Person created successfully'
   end
 
