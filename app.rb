@@ -1,4 +1,15 @@
+require './store'
+require './book'
+require './person'
+require './student'
+
 class App
+  attr_reader :store
+
+  def initialize
+    @store = Store.new
+  end
+
   def main_menu
     puts '1 - List all books'
     puts '2 - List all people'
@@ -7,10 +18,11 @@ class App
     puts '5 - Create a rental'
     puts '6 - List all rentals for a given person id'
     puts '7 - Exit'
-    selection = gets.chomp
+    main_selection
   end
 
-  def main_menu_selection
+  def main_selection
+    selection = gets.chomp
     case selection
     when '1' then list_all_books
     when '2' then list_all_people
@@ -21,18 +33,31 @@ class App
     when '7' then exit
     else
       puts 'Invalid selection'
+      main_selection
     end
   end
 
   def list_all_books
-    Book.all.each do |book|
-      puts book.title
+    @store.books.each do |book|
+      puts "Title: #{book.title}, Author: #{book.author}"
     end
   end
 
   def list_all_people
-    Person.all.each do |person|
-      puts person.name
+    @store.people.each do |person|
+      puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
   end
+
+  def main
+    main_menu
+  end
 end
+
+book = Book.new('The Hobbit', 'J.R.R. Tolkien')
+student = Student.new(12, '1A', 'John Doe')
+app = App.new
+app.store.books << book
+app.store.people << student
+app.main
+# student = Student.new(12, '1A', 'John Doe')

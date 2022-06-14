@@ -1,9 +1,10 @@
 class Student < Person
-  Student.all = []
-  def initialize(age, classroom, name = 'Unknown', parent_permission: true)
+  attr_reader :rentals
+
+  def initialize(age, classroom, name = 'Unknown', parent_permission = true)
     super(age, name, parent_permission)
     @classroom = classroom
-    Student.all << self
+    @rentals = []
   end
 
   def play_hookey
