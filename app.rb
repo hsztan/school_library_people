@@ -40,10 +40,9 @@ class App
   def create_person
     puts 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     selection = gets.chomp
-    if selection == '1'
-      create_student
-    elsif selection == '2'
-      create_teacher
+    case selection
+    when '1' then create_student
+    when '2' then create_teacher
     else
       puts 'Invalid selection'
       create_person
