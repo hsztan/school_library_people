@@ -37,6 +37,31 @@ class App
     end
   end
 
+  def create_person
+    puts 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
+    selection = gets.chomp
+    if selection == '1'
+      create_student
+    elsif selection == '2'
+      create_teacher
+    else
+      puts 'Invalid selection'
+      create_person
+    end
+  end
+
+  def create_student
+    puts 'Age: '
+    age = gets.chomp
+    puts 'Name: '
+    name = gets.chomp
+    puts 'Has parent permission? (Y/N): '
+    parent_permission = gets.chomp.downcase == 'y'
+    student = Student.new(age, 'n/a', name, parent_permission)
+    @store.people << student
+    puts 'Person created successfully'
+  end
+
   def list_all_books
     @store.books.each do |book|
       puts "Title: #{book.title}, Author: #{book.author}"
