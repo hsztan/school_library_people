@@ -1,7 +1,9 @@
 require './store'
 require './book'
 require './person'
+require './teacher'
 require './student'
+require './rental'
 
 class App
   attr_reader :store
@@ -11,6 +13,8 @@ class App
   end
 
   def main_menu
+    puts ''
+    puts 'Please choose an option by entering a number'
     puts '1 - List all books'
     puts '2 - List all people'
     puts '3 - Create a person'
@@ -57,6 +61,7 @@ class App
       puts 'Invalid selection'
       create_person
     end
+    main_menu
   end
 
   def create_student
@@ -87,12 +92,14 @@ class App
     @store.books.each do |book|
       puts "Title: #{book.title}, Author: #{book.author}"
     end
+    main_menu
   end
 
   def list_all_people
     @store.people.each do |person|
       puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
+    main_menu
   end
 
   def main
@@ -100,10 +107,10 @@ class App
   end
 end
 
-book = Book.new('The Hobbit', 'J.R.R. Tolkien')
-student = Student.new(12, '1A', 'John Doe')
-app = App.new
-app.store.books << book
-app.store.people << student
-app.main
+# book = Book.new('The Hobbit', 'J.R.R. Tolkien')
+# student = Student.new(12, '1A', 'John Doe')
+# app = App.new
+# app.store.books << book
+# app.store.people << student
+App.new.main
 # student = Student.new(12, '1A', 'John Doe')
