@@ -7,6 +7,7 @@ class Rental
     @book = book
     @book.rentals << self
 
+    puts student.inspect
     @student = student
     @student.rentals << self
   end
