@@ -25,7 +25,7 @@ class App
     main_selection
   end
 
-  def main_selection
+  def main_selection # rubocop:disable Metrics/CyclomaticComplexity
     selection = gets.chomp
     case selection
     when '1' then list_all_books
@@ -34,8 +34,7 @@ class App
     when '4' then create_book
     when '5' then create_rental
     when '6' then list_all_rentals_by_id
-    # when '7' then abort('Thanks for your business. Goodbye!')
-    # Can't add line 7 because rubocop complains about cyclomatic complexity :-(
+    when '7' then abort('Thanks for your business. Goodbye!')
     else
       puts 'Invalid selection'
       main_selection
@@ -139,9 +138,13 @@ class App
     main_menu
   end
 
-  def main
+  def run
     main_menu
   end
 end
 
-App.new.main
+def main
+  App.new.run
+end
+
+main
