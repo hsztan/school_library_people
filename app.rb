@@ -41,34 +41,17 @@ class App
     end
   end
 
-  def create_rental
-    puts 'Select a book from the following list by number'
-    store.books.each_with_index do |book, index|
-      puts "#{index}) Title: #{book.title}, Author: #{book.author}"
+  def list_all_books
+    @store.books.each do |book|
+      puts "Title: #{book.title}, Author: #{book.author}"
     end
-    book_selection = gets.chomp.to_i
-    puts ''
-    puts 'Select a person from the following list by number (not id)'
-    store.people.each_with_index do |person, index|
-      puts "#{index}) Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-    end
-    person_selection = gets.chomp.to_i
-    puts ''
-    print('Enter the date of the rental (YYYY-MM-DD): ')
-    rental_date = gets.chomp
-    Rental.new(rental_date, store.books[book_selection], store.people[person_selection])
-    puts 'Rental created successfully'
     main_menu
   end
 
-  def create_book
-    print 'Title: '
-    title = gets.chomp
-    print 'Author: '
-    author = gets.chomp
-    book = Book.new(title, author)
-    store.books << book
-    puts 'Book created successfully'
+  def list_all_people
+    @store.people.each do |person|
+      puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    end
     main_menu
   end
 
@@ -109,17 +92,34 @@ class App
     puts 'Person created successfully'
   end
 
-  def list_all_books
-    @store.books.each do |book|
-      puts "Title: #{book.title}, Author: #{book.author}"
-    end
+  def create_book
+    print 'Title: '
+    title = gets.chomp
+    print 'Author: '
+    author = gets.chomp
+    book = Book.new(title, author)
+    store.books << book
+    puts 'Book created successfully'
     main_menu
   end
 
-  def list_all_people
-    @store.people.each do |person|
-      puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+  def create_rental
+    puts 'Select a book from the following list by number'
+    store.books.each_with_index do |book, index|
+      puts "#{index}) Title: #{book.title}, Author: #{book.author}"
     end
+    book_selection = gets.chomp.to_i
+    puts ''
+    puts 'Select a person from the following list by number (not id)'
+    store.people.each_with_index do |person, index|
+      puts "#{index}) Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    end
+    person_selection = gets.chomp.to_i
+    puts ''
+    print('Enter the date of the rental (YYYY-MM-DD): ')
+    rental_date = gets.chomp
+    Rental.new(rental_date, store.books[book_selection], store.people[person_selection])
+    puts 'Rental created successfully'
     main_menu
   end
 
@@ -128,6 +128,7 @@ class App
     store.people.each_with_index do |person, index|
       puts "#{index}) Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
+    print 'Enter the id of the person: '
     person_selection = gets.chomp.to_i
     puts 'Rentals:'
     person = store.people[person_selection]
