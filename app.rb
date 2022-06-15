@@ -25,6 +25,7 @@ class App
     main_selection
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def main_selection
     selection = gets.chomp
     case selection
