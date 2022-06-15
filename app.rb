@@ -33,7 +33,7 @@ class App
     when '3' then create_person
     when '4' then create_book
     when '5' then create_rental
-    when '6' then list_all_rentals_for_person
+    when '6' then list_all_rentals_by_id
     when '7' then abort('Thanks for your business. Goodbye!')
     else
       puts 'Invalid selection'
@@ -119,6 +119,20 @@ class App
   def list_all_people
     @store.people.each do |person|
       puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    end
+    main_menu
+  end
+
+  def list_all_rentals_by_id
+    puts 'Select a person from the following list by number (not id)'
+    store.people.each_with_index do |person, index|
+      puts "#{index}) Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    end
+    person_selection = gets.chomp.to_i
+    puts 'Rentals:'
+    person = store.people[person_selection]
+    person.rentals.each do |rental|
+      puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}"
     end
     main_menu
   end
