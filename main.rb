@@ -59,8 +59,8 @@ class App
     puts 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     selection = gets.chomp
     case selection
-    when '1' then create_student
-    when '2' then create_teacher
+    when 1 then create_student
+    when 2 then create_teacher
     else
       puts 'Invalid selection'
       create_person
