@@ -3,7 +3,6 @@ require './book'
 require './teacher'
 require './student'
 require './rental'
-require 'pry'
 
 class Reader
   def initialize(store)
@@ -12,13 +11,16 @@ class Reader
     @rentals_file = File.open('rentals.json', 'r')
     @store = store
     @people = []
+    @books = []
   end
 
   def read
     @people_file.each { |line| @people << JSON.parse(line) }
-    binding.pry
     @people_file.close
     create_people
+    @books_file.each { |line| @books << JSON.parse(line) }
+    @books_file.close
+    create_books
   end
 
   private
@@ -32,6 +34,12 @@ class Reader
         student = Student.new(person[0], 'n/a', person[2], parent_permission: person[3])
         @store.people << student
       end
+    end
+  end
+
+  def create_books
+    @books.each do |book|
+      @store.books << Book.new(book[0], book[1])
     end
   end
 end
