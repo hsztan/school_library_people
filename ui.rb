@@ -105,6 +105,7 @@ class UI
     author = gets.chomp
     book = Book.new(title, author)
     store.books << book
+    @writer.books(title: title, author: author)
     puts 'Book created successfully'
     main_menu
   end
