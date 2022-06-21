@@ -19,7 +19,7 @@ class Writer
                     end
   end
 
-  def people(age:, name:, classroom: 'n/a', parent_permission: true, specialization: 'n/a')
+  def people(age:, name:, classroom: 'n/a', parent_permission: true, specialization: nil)
     object = [age, classroom, name, parent_permission, specialization]
     @people_file.write("#{JSON.generate(object)}\n")
   end
