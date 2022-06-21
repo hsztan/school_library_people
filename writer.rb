@@ -1,6 +1,12 @@
+require 'json'
+
 class Writer
   def initialize()
-    @people_file = File.open('people.json', 'w')
+    @people_file = if File.exist?('people.json')
+                    File.open('people.json', 'a')
+                   else
+                    File.open('people.json', 'w')
+                   end
     @books_file = File.open('books.json', 'w')
     @rentals_file = File.open('rentals.json', 'w')
   end
