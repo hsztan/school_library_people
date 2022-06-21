@@ -29,6 +29,11 @@ class Writer
     @books_file.write("#{JSON.generate(object)}\n")
   end
 
+  def rentals(date:, person_name:, book_title:)
+    object = [date, person_name, book_title]
+    @rentals_file.write("#{JSON.generate(object)}\n")
+  end
+
   def close_all
     @people_file.close
     @books_file.close
