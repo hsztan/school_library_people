@@ -5,12 +5,14 @@ require './teacher'
 require './student'
 require './rental'
 require './writer'
+require './reader'
 
 class UI
   attr_reader :store
 
   def initialize
     @store = Store.new
+    Reader.new(@store).read
     @writer = Writer.new
     @main_menu = [
       'List all books',
