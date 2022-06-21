@@ -12,6 +12,7 @@ class Reader
     @store = store
     @people = []
     @books = []
+    @rentals = []
   end
 
   def read
@@ -21,6 +22,9 @@ class Reader
     @books_file.each { |line| @books << JSON.parse(line) }
     @books_file.close
     create_books
+    @rentals_file.each { |line| @rentals << JSON.parse(line) }
+    @rentals_file.close
+    create_rentals
   end
 
   private
@@ -40,6 +44,14 @@ class Reader
   def create_books
     @books.each do |book|
       @store.books << Book.new(book[0], book[1])
+    end
+  end
+
+  def create_rentals
+    @rentals.each do |rental|
+      person_name = @store.people.find { |person| person.name == rental[1] }
+      book_title = @store.books.find { |book| book.title == rental[2] }
+      Rental.new(rental[0], book_title, person_name)
     end
   end
 end
