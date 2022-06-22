@@ -1,5 +1,5 @@
-require './classroom'
 require './student'
+require './classroom'
 
 describe Classroom do
   it 'should have a label' do
