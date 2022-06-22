@@ -17,7 +17,7 @@ describe Person do
 
   it 'should have an age' do
     person = Person.new('18', 'John', parent_permission: true)
-    expect(person.age).to eq('18')
+    expect(person.age).to eq(18)
   end
 
   it 'should have a parent permission' do
@@ -35,5 +35,15 @@ describe Person do
     book = Book.new('The Great Gatsby', 'F. Scott Fitzgerald')
     rental = Rental.new('2018-01-01', book, person)
     expect(person.rentals).to eq([rental])
+  end
+
+  it ':can_use_services? should return true if the person is 18 or older' do
+    person = Person.new('18', 'John', parent_permission: true)
+    expect(person.can_use_services?).to eq(true)
+  end
+
+  it ':correct_name should return the name of the person' do
+    person = Person.new('18', 'John', parent_permission: true)
+    expect(person.correct_name).to eq('John')
   end
 end

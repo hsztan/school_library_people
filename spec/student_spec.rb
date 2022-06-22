@@ -13,7 +13,7 @@ describe Student do
 
   it 'should have an age' do
     student = Student.new('18', '', 'John', parent_permission: true)
-    expect(student.age).to eq('18')
+    expect(student.age).to eq(18)
   end
 
   it 'should have a parent permission' do
