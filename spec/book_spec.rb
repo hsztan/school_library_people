@@ -1,7 +1,7 @@
 require './store'
 require './book'
 
-describe 'Book' do
+describe Book do
   it 'should have a title' do
     book = Book.new('The Great Gatsby', 'F. Scott Fitzgerald')
     expect(book.title).to eq('The Great Gatsby')
