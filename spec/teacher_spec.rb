@@ -1,0 +1,23 @@
+require './teacher'
+
+describe Teacher do
+  it 'should have a name' do
+    teacher = Teacher.new(24, 'Mathematician', 'John')
+    expect(teacher.name).to eq('John')
+  end
+
+  it 'should have an id' do
+    teacher = Teacher.new(24, 'Mathematician', 'John')
+    expect(teacher.id.class).to eq(String)
+  end
+
+  it 'should have an age' do
+    teacher = Teacher.new(24, 'Mathematician', 'John')
+    expect(teacher.age).to eq(24)
+  end
+
+  it 'should have a specialization' do
+    teacher = Teacher.new(24, 'Mathematician', 'John')
+    expect(teacher.specialization).to eq('Mathematician')
+  end
+end
