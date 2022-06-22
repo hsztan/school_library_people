@@ -20,4 +20,9 @@ describe Teacher do
     teacher = Teacher.new(24, 'Mathematician', 'John')
     expect(teacher.specialization).to eq('Mathematician')
   end
+
+  it ':can_use_services? should return true if the teacher is 24 or older' do
+    teacher = Teacher.new(24, 'Mathematician', 'John')
+    expect(teacher.can_use_services?).to eq(true)
+  end
 end
